@@ -1,0 +1,35 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    background-color: #0A3F5C;
+    color: #FFF;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 150px;
+}
+
+h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    margin-left:  20px;
+
+}
+
+.logo {
+    height: 55px;
+    margin-top: -2px;
+    margin-left: -3px;
+
+}
+.login_button {
+    margin-right: 20px;
+    font-size: 18px;
+}
+
