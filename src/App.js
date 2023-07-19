@@ -5,6 +5,7 @@ import VragenlijstEen from "./pages/VragenlijstEen";
 import Home from "./pages/Home";
 import {Routes, Route} from "react-router-dom";
 import Footer from "./components/Footer";
+import Inloggen from "./pages/Inloggen";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/uitleg" element={<Uitleg />} />
+              <Route path="/inloggen" element={<Inloggen />} />
               <Route path="/vragenlijst_1" element={<VragenlijstEen />} />
           </Routes>
           <Footer />
