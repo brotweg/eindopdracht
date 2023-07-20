@@ -1,4 +1,4 @@
-import Irish_setter from "../assets/Irish_setter.png";
+import Corgi from "../assets/Corgi.png";
 import './Inloggen.css'
 
 
@@ -9,7 +9,7 @@ function Inloggen() {
         <>
             <div className="content_wrapper">
                 <div className="information">
-                    <h1>Inloggen</h1>
+                    <h1>Registreren</h1>
                     <p className="form_paragraph">
                         <form>
                             <section>
@@ -18,6 +18,15 @@ function Inloggen() {
                                     name="username"
                                     id="username-field"
                                     type="text"
+                                    value={null}
+                                />
+                            </section>
+                            <section>
+                                <label htmlFor="email-field">E-mail</label>
+                                <input
+                                    name="email"
+                                    id="email-field"
+                                    type="email"
                                     value={null}
                                 />
                             </section>
@@ -35,7 +44,7 @@ function Inloggen() {
                         </form>
                     </p>
                 </div>
-                <img src={Irish_setter} className="setter_image" alt="Irish Setter" />
+                <img src={Corgi} className="corgi_image" alt="Corgi" />
             </div>
 
         </>

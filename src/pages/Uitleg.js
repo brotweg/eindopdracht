@@ -1,11 +1,12 @@
 import ChowChow from "../assets/ChowChow.png";
 import './Uitleg.css'
-import Start_button from "../assets/Start_button.png"
+
+import {useNavigate} from "react-router-dom";
 
 
 
 function Uitleg() {
-
+    const navigate = useNavigate();
     return(
         <>
             <div className="content_wrapper">
@@ -16,7 +17,7 @@ function Uitleg() {
                     <p>Doe de check en je ziet gelijk of jouw favoriete ras bij jou past.</p>
                 </div>
                 <img src={ChowChow} className="chow_image" alt="Chow Chow" />
-                <img src={Start_button} className="start_button" alt="Bone shaped button, press to start" />
+                <button className='start_button' onClick={() => navigate('/vragenlijst_1')}>Start</button>
             </div>
 
         </>

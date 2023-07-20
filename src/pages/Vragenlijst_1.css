@@ -1,0 +1,13 @@
+.pug_image {
+    position: absolute;
+    right: 20rem;
+    height: 10rem;
+    align-self: flex-end;
+}
+
+.button_bottom {
+    align-self: flex-end;
+    position: absolute;
+    margin: 20px;
+    right: 0px;
+}
