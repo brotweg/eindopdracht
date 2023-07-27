@@ -10,47 +10,140 @@ import {useState} from "react";
 
 function VragenlijstEen() {
     const navigate = useNavigate();
-    const name = 'golden retriever';
     const apiKey = 'OvzRvYsVHUUcIgk5PKl5Brg1I4eWGN7toxXd1mvk';
-    const config = {
-        headers:{
-            'X-Api-Key': apiKey,
-        }
-    };
-    const [dogData, setDogData] = useState({});
 
-    async function fetchData() {
+    const [dogData, setDogData] = useState({});
+    const [shedding, setShedding] = useState(1);
+    const [barking, setBarking] = useState(1);
+    const [energy, setEnergy] = useState(1);
+
+    async function fetchData(offset) {
+        let moreDogData = [];
+        for (let i = 1; i <= 10; i++) {
         try {
-            const result = await axios.get('https://api.api-ninjas.com/v1/dogs?name=' + name, config);
-            console.log(result);
-            setDogData(result.data);
-        } catch(e) {
-            console.error(e);
+                const result = await axios.get('https://api.api-ninjas.com/v1/dogs',
+                    {
+                        params: {
+                            shedding: shedding,
+                            barking: barking,
+                            energy: energy,
+                            offset,
+
+                        },
+                        headers: {
+                            'X-Api-Key': apiKey,
+                        }
+                    }
+                );
+
+            return result.data;
+
+            } catch (e) {
+                console.error(e);
+            return [];
+            }
         }
+}
+
+
+    function handleSliderChangeShedding(e){
+        setShedding(e.target.value);
     }
 
-    Object.keys(dogData).length > 0 && console.log(dogData[0].name)
+    function handleSliderChangeBarking(e) {
+        setBarking(e.target.value);
+    }
+
+    function handleSliderChangeEnergy(e) {
+        setEnergy(e.target.value);
+    }
+   async function handleClick(e) {
+        e.preventDefault();
+        try {
+            const resultsPerPage = 20; // Number of results per page
+            let offset = 0;
+            let moreDogData = [];
+
+            while (true) {
+                const result = await fetchData(offset);
+                if (result.length === 0) break; // No more data, exit the loop
+                moreDogData = moreDogData.concat(result);
+                offset += resultsPerPage;
+            }
+
+            setDogData(moreDogData);
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return(
         <>
             <div className="content_wrapper">
                 <div className="information">
                     <h1>Jouw wensen</h1>
-                    <button
-                        type="button"
-                        onClick={fetchData}
-                    >
-                        Haal data op!
-                    </button>
-                        <span>
+                    <form>
+                        <section>
+                            <label htmlFor="shedding_slider">Hoeveel mag de hond uitharen?</label>
+                            <input
+                                name="shedding"
+                                id="shedding_slider"
+                                type="range"
+                                min="1"
+                                max="5"
+                                step="1"
+                                value={shedding}
+                                onChange={handleSliderChangeShedding}
+                            />
+                            <span>{shedding}</span>
+
+                       </section>
+                        <section>
+                            <label htmlFor="barking_slider">Hoeveel mag de hond blaffen?</label>
+                            <input
+                                name="barking"
+                                id="barking_slider"
+                                type="range"
+                                min="1"
+                                max="5"
+                                step="1"
+                                value={barking}
+                                onChange={handleSliderChangeBarking}
+                            />
+                            <span>{barking}</span>
+
+                        </section>
+                        <section>
+                            <label htmlFor="barking_slider">Hoe energiek mag de hond zijn?</label>
+                            <input
+                                name="energy"
+                                id="energy_slider"
+                                type="range"
+                                min="1"
+                                max="5"
+                                step="1"
+                                value={energy}
+                                onChange={handleSliderChangeEnergy}
+                            />
+                            <span>{energy}</span>
+
+                        </section>
+                       <button type="submit" onClick={handleClick}>Verzend</button>
+                    </form>
+
+
       {Object.keys(dogData).length > 0 &&
           <>
-              <h2>{dogData[0].name}</h2>
-
+              Je hebt gezocht op:
+              <ul>
+                  {dogData.map((dog, index) => (
+                      <li key={index}>{dog.name}</li>
+                  ))}
+              </ul>
           </>
       }
-    </span>
-                    Je hebt gezocht op: {dogData.name}
+
+
                 </div>
                 <img src={Pug} className="pug_image" alt="Pug" />
                 <button className="button_bottom" onClick={() => navigate('/vragenlijst_2')}>Ga Verder</button>
