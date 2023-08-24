@@ -2,7 +2,8 @@ import Pug from '../assets/Pug.png'
 import './Vragenlijst_1.css'
 import {useNavigate} from "react-router-dom";
 import axios from 'axios';
-import {useState} from "react";
+import {useContext, useState} from "react";
+import {Context} from "../components/Context";
 
 
 
@@ -18,6 +19,7 @@ function VragenlijstEen() {
     const [energy, setEnergy] = useState(1);
     const [protectiveness, setProtectiveness] = useState(1);
     const [trainability, setTrainability] = useState(1);
+    const [dogChoice, setDogChoice] = useContext(Context);
 
 
     async function fetchData(offset) {
@@ -68,7 +70,7 @@ function VragenlijstEen() {
         }
     }
 
-    console.log(dogData);
+
 
     function handleSliderChangeEnergy(e) {
         setEnergy(e.target.value);
@@ -132,6 +134,15 @@ function VragenlijstEen() {
                 return '';
         }
     }
+
+    function handleClickResults(dog) {
+        console.log(dog.name);
+        setDogChoice(dog.name);
+        navigate('/ras_informatie');
+
+    }
+
+
 
     return(
         <>
@@ -197,13 +208,11 @@ function VragenlijstEen() {
                     {Object.keys(dogData).length > 0 && loading === false &&
                         <>
                             <ul className="dog_breed_list">
-                                {dogData.map((dog, index) => (
-                                    <>
-                                        <li key={index}>
-                                            <h3>{dog.name}</h3>
-                                            <img src={dog.image_link}/>
-                                        </li>
-                                    </>
+                                {dogData.map((dog) => (
+                                    <li key={dog.name} onClick={() => handleClickResults(dog)}>
+                                        <h3>{dog.name}</h3>
+                                        <img src={dog.image_link} alt={dog.name} />
+                                    </li>
                                 ))}
                             </ul>
                         </>
