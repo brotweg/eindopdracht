@@ -1,0 +1,27 @@
+.setter_image {
+    position: absolute;
+    right: 15rem;
+    height: 20rem;
+    align-self: flex-end;
+}
+
+.form_paragraph {
+    width: 420px;
+    text-align: left;
+}
+
+.form_paragraph section {
+    padding: 5px;
+}
+
+.form_paragraph input {
+    width: 300px;
+    text-align: right;
+    float: right;
+}
+
+.form_paragraph button {
+    float: right;
+    margin-top: 40px;
+}
+
