@@ -15,7 +15,7 @@ nav {
     width: 150px;
 }
 
-h3 {
+.logo-container h3 {
     font-family: 'Oswald', sans-serif;
     font-size: 28px;
     margin-left:  20px;
