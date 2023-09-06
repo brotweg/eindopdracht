@@ -2,7 +2,9 @@ import Pug from '../assets/Pug.png'
 import './Vragenlijst_1.css'
 import {useNavigate} from "react-router-dom";
 import axios from 'axios';
-import {useState} from "react";
+import {useContext, useState} from "react";
+import {Context} from "../components/Context";
+
 
 
 
@@ -16,8 +18,9 @@ function VragenlijstEen() {
     const [dogData, setDogData] = useState({});
     const [loading, toggleLoading] = useState(false);
     const [energy, setEnergy] = useState(1);
-    const [protectiveness, setProtectiveness] = useState(1);
-    const [trainability, setTrainability] = useState(1);
+    const [playfulness, setPlayfulness] = useState(1);
+    const [barking, setBarking] = useState(1);
+    const [dogChoice, setDogChoice] = useContext(Context);
 
 
     async function fetchData(offset) {
@@ -28,8 +31,8 @@ function VragenlijstEen() {
                     {
                         params: {
                             energy: energy,
-                            protectiveness: protectiveness,
-                            trainability: trainability,
+                            playfulness: playfulness,
+                            barking: barking,
                             offset,
                         },
                         headers: {
@@ -38,6 +41,7 @@ function VragenlijstEen() {
                     }
                 );
                 toggleLoading(false);
+                console.log(result.data)
 
                 return result.data;
 
@@ -68,18 +72,18 @@ function VragenlijstEen() {
         }
     }
 
-    console.log(dogData);
+
 
     function handleSliderChangeEnergy(e) {
         setEnergy(e.target.value);
     }
 
-    function handleSliderChangeProtectiveness(e) {
-        setProtectiveness(e.target.value);
+    function handleSliderChangePlayfulness(e) {
+        setPlayfulness(e.target.value);
     }
 
-    function handleSliderChangeTrainability(e) {
-        setTrainability(e.target.value);
+    function handleSliderChangeBarking(e) {
+        setBarking(e.target.value);
     }
 
     function sliderTextEnergy(energy) {
@@ -99,39 +103,50 @@ function VragenlijstEen() {
         }
     }
 
-    function sliderTextProtectiveness(protectiveness) {
-        switch (protectiveness) {
+    function sliderTextPlayfulness(playfulness) {
+        switch (playfulness) {
             case '1':
-                return 'Allemansvriend';
+                return 'Serieus';
             case '2':
-                return 'Niet erg waakzaam';
+                return 'Niet erg speels';
             case '3':
                 return 'Gemiddeld';
             case '4':
-                return 'Redelijk waakzaam';
+                return 'Grappenmaker';
             case '5':
-                return 'Bodyguard';
+                return 'Clown';
             default:
                 return '';
         }
     }
 
-    function sliderTextTrainability(trainability) {
-        switch (trainability) {
+    function sliderTextBarking(barking) {
+        switch (barking) {
             case '1':
-                return 'Oost-Indisch doof';
+                return 'Stil als een muis';
             case '2':
-                return 'Luistert als hij zin heeft';
+                return 'Blaft af en toe';
             case '3':
                 return 'Gemiddeld';
             case '4':
-                return 'Redelijk goed te trainen';
+                return 'Vrij luid';
             case '5':
-                return 'Circushond';
+                return 'Herrieschopper';
             default:
                 return '';
         }
     }
+
+    function handleClickResults(dog) {
+        console.log(dog);
+        setDogChoice(dog);
+        navigate('/ras_informatie');
+
+    }
+
+
+
+
 
     return(
         <>
@@ -155,33 +170,33 @@ function VragenlijstEen() {
 
                         </section>
                         <section>
-                            <label htmlFor="protectiveness_slider">Hoe waakzaam mag de hond zijn?</label>
+                            <label htmlFor="playfulness_slider">Hoe speels mag de hond zijn?</label>
                             <input
-                                name="protectiveness"
-                                id="protectiveness_slider"
+                                name="playfulness"
+                                id="playfulness_slider"
                                 type="range"
                                 min="1"
                                 max="5"
                                 step="1"
-                                value={protectiveness}
-                                onChange={handleSliderChangeProtectiveness}
+                                value={playfulness}
+                                onChange={handleSliderChangePlayfulness}
                             />
-                            <span>{sliderTextProtectiveness(protectiveness)}</span>
+                            <span>{sliderTextPlayfulness(playfulness)}</span>
 
                         </section>
                         <section>
-                            <label htmlFor="trainability_slider">Hoe trainbaar moet de hond zijn?</label>
+                            <label htmlFor="barking_slider">Hoeveel mag de hond blaffen?</label>
                             <input
-                                name="trainability"
-                                id="trainability_slider"
+                                name="barking"
+                                id="barking_slider"
                                 type="range"
                                 min="1"
                                 max="5"
                                 step="1"
-                                value={trainability}
-                                onChange={handleSliderChangeTrainability}
+                                value={barking}
+                                onChange={handleSliderChangeBarking}
                             />
-                            <span>{sliderTextTrainability(trainability)}</span>
+                            <span>{sliderTextBarking(barking)}</span>
 
                         </section>
 
@@ -197,13 +212,11 @@ function VragenlijstEen() {
                     {Object.keys(dogData).length > 0 && loading === false &&
                         <>
                             <ul className="dog_breed_list">
-                                {dogData.map((dog, index) => (
-                                    <>
-                                        <li key={index}>
-                                            <h3>{dog.name}</h3>
-                                            <img src={dog.image_link}/>
-                                        </li>
-                                    </>
+                                {dogData.map((dog) => (
+                                    <li key={dog.name} onClick={() => handleClickResults(dog)}>
+                                        <h3>{dog.name}</h3>
+                                        <img src={dog.image_link} alt={dog.name} />
+                                    </li>
                                 ))}
                             </ul>
                         </>
@@ -217,7 +230,7 @@ function VragenlijstEen() {
 
                 </div>
                 <img src={Pug} className="pug_image" alt="Pug" />
-                <button className="button_bottom" onClick={() => navigate('/vragenlijst_2')}>Ga Verder</button>
+
             </div>
 
         </>
