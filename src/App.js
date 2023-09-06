@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Inloggen from "./pages/Inloggen";
 import Registreren from "./pages/Registreren";
 import RasInformatie from "./pages/RasInformatie";
+import VragenlijstTwee from "./pages/Vragenlijst_2";
 
 
 
@@ -29,6 +30,7 @@ function App() {
               <Route path="/registreren" element={<Registreren />} />
               <Route path="/vragenlijst_1" element={<VragenlijstEen />} />
               <Route path="/ras_informatie" element={<RasInformatie />} />
+              <Route path="/vragenlijst_2" element={<VragenlijstTwee />} />
           </Routes>
           </Context.Provider>
           <Footer />
