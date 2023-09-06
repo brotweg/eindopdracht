@@ -15,7 +15,7 @@ import RasInformatie from "./pages/RasInformatie";
 
 
 function App() {
-    const [dogChoice, setDogChoice] = useState('');
+    const [dogChoice, setDogChoice] = useState({});
 
   return (
 
