@@ -7,10 +7,6 @@ import {Context} from "../components/Context";
 
 
 
-
-
-
-
 function VragenlijstEen() {
     const navigate = useNavigate();
     const apiKey = 'OvzRvYsVHUUcIgk5PKl5Brg1I4eWGN7toxXd1mvk';
