@@ -1,16 +1,4 @@
-.setter_image {
-    position: absolute;
-    right: 15rem;
-    height: 20rem;
-    align-self: flex-end;
-}
 
-.corgi_image {
-    position: absolute;
-    right: 15rem;
-    height: 15rem;
-    align-self: flex-end;
-}
 
 .form_paragraph {
     width: 420px;

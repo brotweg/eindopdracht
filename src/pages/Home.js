@@ -1,22 +1,29 @@
 import Bernes_mountain_dog from "../assets/Bernes_mountain_dog.png"
-import './Home.css'
+import Collie from "../assets/Collie.png"
+import styles from './Home.module.css'
+import '../index.css'
 import {useNavigate} from "react-router-dom";
 
 function Home() {
     const navigate = useNavigate();
     return (
         <>
-        <div className="content_wrapper">
-            <div className="information">
-        <h1>Welk hondenras past bij jou?</h1>
-        <p>Er zijn enkele honderden hondenrassen waar je uit kan kiezen als toekomstig baasje. Je wilt geen verkeerde of impulsieve keuze maken, maar soms kun je door de bomen het bos niet meer zien. Dogmatch.nl probeert aanstaande hondeneigenaren een zetje in de goede richting te geven door alvast te filteren wat wel of niet bij jouw situatie past. Enkele korte vragen geven een overzicht van wat jij verwacht van jouw toekomstige hond. Nog een aantal vragen geven aan wat de hond van jou verwacht. Is het een match?</p>
-        <p>Login of creer een account om te beginnen!</p>
+        <div className={styles['page_wrapper']}>
+            <div className={styles['inner_wrapper']}>
+                <h1>What kind of dog breed suits you?</h1>
+                <p>As a prospective dog owner, you're faced with the daunting task of choosing from hundreds of dog breeds. Making the right choice is crucial, and you don't want to act impulsively. However, sometimes, the sheer number of options can be overwhelming. That's where Dogmatch.nl comes in. It aims to assist future dog owners by helping them filter through the choices to find the perfect fit for their situation.</p>
+                <p>You'll be asked a few brief questions to outline your expectations for your future dog. Additionally, there will be questions about what the dog would expect from you. By answering these questions, you'll be able to determine if there's a match between your preferences and the dog's needs.</p>
+                <p>Login or create an account to start!</p>
                 <span>
-        <button onClick={ ()=> navigate('/inloggen')}>Login</button>
-        <button onClick={ () => navigate('/registreren')}>Registreer</button>
+                    <button onClick={ ()=> navigate('/inloggen')}>Login</button>
+                    <button onClick={ () => navigate('/registreren')}>Create account</button>
                 </span>
-        </div>
-            <img src={Bernes_mountain_dog} className="bernes_image" alt="Bernes Mountain Dog" />
+            </div>
+
+                <div className={styles['dog']}>
+                    <img  alt="Collie" src={Collie} className={styles['dog--collie']}/>
+                    <img  alt="Bernese mountain dog" src={Bernes_mountain_dog} className={styles['dog--bernese']}/>
+                </div>
         </div>
 
             </>

@@ -1,0 +1,47 @@
+.page_wrapper {
+    display: flex;
+    flex-direction: row; /* set to column to position dogs below other content */
+    flex-wrap: wrap;
+    min-width: 420px;
+    min-height: 100vh;
+}
+
+.inner_wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    max-width: 60%;
+    min-width: 420px;
+    flex-grow: 2;
+    padding-left: 20px;
+}
+
+/* Sizing of the dog images */
+
+.dog {
+  display: flex;
+  align-items: flex-end;
+  align-self: flex-end;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  margin: 20px 0 0 20px;
+}
+
+.dog--bernese {
+  max-width: 100%;
+  height: 17rem;
+}
+
+.dog--collie {
+  max-width: 100%;
+  height: 14rem;
+}
+
+/* ######## Other elements ###### */
+
+
+button + button {
+    margin-left: 10px;
+}
+

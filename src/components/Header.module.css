@@ -3,9 +3,14 @@ nav {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    height: 50px;
+    max-height: 50px;
     background-color: #0A3F5C;
     color: #FFF;
+    min-width: 420px;
+}
+
+nav a {
+    color: var(--white);
 }
 
 .logo-container {
@@ -18,7 +23,7 @@ nav {
 .logo-container h3 {
     font-family: 'Oswald', sans-serif;
     font-size: 28px;
-    margin-left:  20px;
+    margin: 0px 0px 0px 20px;
 
 }
 

@@ -4,13 +4,14 @@ import {Context} from "./components/Context";
 import Header from "./components/Header";
 import Uitleg from "./pages/Uitleg";
 import VragenlijstEen from "./pages/Vragenlijst_1";
+import VragenlijstTwee from "./pages/Vragenlijst_2";
 import Home from "./pages/Home";
 import {Routes, Route} from "react-router-dom";
 import Footer from "./components/Footer";
 import Inloggen from "./pages/Inloggen";
 import Registreren from "./pages/Registreren";
 import RasInformatie from "./pages/RasInformatie";
-import VragenlijstTwee from "./pages/Vragenlijst_2";
+import Results from "./pages/Results";
 
 
 
@@ -31,6 +32,7 @@ function App() {
               <Route path="/vragenlijst_1" element={<VragenlijstEen />} />
               <Route path="/ras_informatie" element={<RasInformatie />} />
               <Route path="/vragenlijst_2" element={<VragenlijstTwee />} />
+              <Route path="/results" element={<Results />} />
           </Routes>
           </Context.Provider>
           <Footer />

@@ -34,7 +34,7 @@ function BreedInfo() {
             } else {
                 console.log("Breed not found");
             }
-            toggleLoading(false)
+            toggleLoading(false);
 
 
         } catch (e) {
