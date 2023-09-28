@@ -1,5 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald&family=Sriracha&display=swap');
 
+/*########## Colors ########## */
+
+:root {
+  --dark-blue: #0A3F5C;
+  --light-blue: #1898DC;
+  --white: #FFF;
+}
+
+
+/* ########## General styles ########### */
+
+a {
+  text-decoration: none;
+}
+
+p {
+
+}
+
+h1 {
+  font-family: "Sriracha", serif;
+  margin: 10px 0px;
+
+}
+
+
+button {
+  background-color: var(--light-blue);
+  color: var(--white);
+  border: none;
+  width: 200px;
+  height: 50px;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+}
+
+
 
 body {
   margin: 0;
@@ -10,68 +47,72 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  color: #FFFFFF;
-  text-decoration: none;
+/* ######## General structure for all pages ######## */
 
-}
-
-
-
-.content_wrapper {
+/*
+.page_wrapper {
   display: flex;
-  flex-direction: row;
-  flex: 1;
+  flex-direction: row; // set to column to position dogs below other content
+  flex-wrap: wrap;
+  min-width: 420px;
   min-height: 100vh;
 }
 
-
-
-
-html {
-  /* voor mobiel */
-  font-size: 16px;
-
+.inner_wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  max-width: 60%;
+  min-width: 420px;
+  flex-grow: 2;
 }
 
+/* Sizing of the dog images
 
-@media screen and (min-width: 900px) {
-  /* voor tablets */
-  html {
-    font-size: 14px;
-
-
-  }
+.dog {
+  display: flex;
+  align-items: flex-end;
+  align-self: flex-end;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  margin: 20px 0 0 20px;
 }
 
-@media screen and (min-width: 1200px) {
-  /* voor desktops en groter */
-  html {
-    font-size: 14px;
-  }
+.dog--bernese {
+  max-width: 100%;
+  height: 17rem;
 }
 
-h1 {
-  font-family: "Sriracha", serif;
+.dog--collie {
+  max-width: 100%;
+  height: 14rem;
 }
 
+*/
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+.dog--setter {
+  right: 15rem;
+  height: 20rem;
 }
 
-button {
-  background-color: #1898DC;
-  color: #FFFFFF;
-  border: none;
-  width: 200px;
-  height: 50px;
-  cursor: pointer;
-  font-family: 'Oswald', sans-serif;
-
+.dog--corgi {
+  right: 15rem;
+  height: 15rem;
 }
 
-button + button {
-  margin-left: 10px;
+.dog--chow {
+  left: 20px;
+  height: 20rem;
+}
+
+.dog--pug {
+  right: 20rem;
+  height: 10rem;
+}
+
+.dog--schnauzer {
+  right: 25rem;
+  height: 15rem;
 }

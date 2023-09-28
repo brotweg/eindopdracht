@@ -1,13 +1,11 @@
 import Pug from '../assets/Pug.png'
-import './Vragenlijst_1.css'
+import Corgi from '../assets/Corgi.png'
+import styles from './Vragenlijst_1.module.css'
+import '../index.css'
 import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import {useContext, useState} from "react";
 import {Context} from "../components/Context";
-
-
-
-
 
 
 
@@ -89,15 +87,15 @@ function VragenlijstEen() {
     function sliderTextEnergy(energy) {
         switch (energy) {
             case '1':
-                return 'Lui';
+                return 'Lazy';
             case '2':
-                return 'Rustig';
+                return 'Calm';
             case '3':
-                return 'Gemiddeld';
+                return 'Moderate';
             case '4':
-                return 'Redelijk actief';
+                return 'Active';
             case '5':
-                return 'Altijd druk';
+                return 'Hyper';
             default:
                 return '';
         }
@@ -106,15 +104,15 @@ function VragenlijstEen() {
     function sliderTextPlayfulness(playfulness) {
         switch (playfulness) {
             case '1':
-                return 'Serieus';
+                return 'Serious';
             case '2':
-                return 'Niet erg speels';
+                return 'Reserved';
             case '3':
-                return 'Gemiddeld';
+                return 'Moderate';
             case '4':
-                return 'Grappenmaker';
+                return 'Jovial';
             case '5':
-                return 'Clown';
+                return 'Clownish';
             default:
                 return '';
         }
@@ -123,15 +121,15 @@ function VragenlijstEen() {
     function sliderTextBarking(barking) {
         switch (barking) {
             case '1':
-                return 'Stil als een muis';
+                return 'Quiet';
             case '2':
-                return 'Blaft af en toe';
+                return 'Hushed';
             case '3':
-                return 'Gemiddeld';
+                return 'Moderate';
             case '4':
-                return 'Vrij luid';
+                return 'Vocal';
             case '5':
-                return 'Herrieschopper';
+                return 'Boisterous';
             default:
                 return '';
         }
@@ -150,12 +148,12 @@ function VragenlijstEen() {
 
     return(
         <>
-            <div className="content_wrapper">
-                <div className="vragenlijst_1">
-                    <h1>Jouw wensen</h1>
+            <div className={styles['page_wrapper']}>
+                <div className={styles['inner_wrapper']}>
+                    <h1>Your perfect dog</h1>
                     <form>
                         <section>
-                            <label htmlFor="energy_slider">Hoe energiek mag de hond zijn?</label>
+                            <label htmlFor="energy_slider">Energy level:</label><br/>
                             <input
                                 name="energy"
                                 id="energy_slider"
@@ -170,7 +168,7 @@ function VragenlijstEen() {
 
                         </section>
                         <section>
-                            <label htmlFor="playfulness_slider">Hoe speels mag de hond zijn?</label>
+                            <label htmlFor="playfulness_slider">Playfulness:</label><br/>
                             <input
                                 name="playfulness"
                                 id="playfulness_slider"
@@ -185,7 +183,7 @@ function VragenlijstEen() {
 
                         </section>
                         <section>
-                            <label htmlFor="barking_slider">Hoeveel mag de hond blaffen?</label>
+                            <label htmlFor="barking_slider">Vocalization level:</label><br/>
                             <input
                                 name="barking"
                                 id="barking_slider"
@@ -200,18 +198,20 @@ function VragenlijstEen() {
 
                         </section>
 
-                        <button type="submit" onClick={handleClick} className="vragenlijst_1_button">Verzend</button>
+                        <button type="submit" onClick={handleClick}>Verzend</button>
+
+
 
                     </form>
 
 
                     {loading &&
-                        <p>Aan het laden...</p>
+                        <p>Loading...</p>
                     }
 
                     {Object.keys(dogData).length > 0 && loading === false &&
                         <>
-                            <ul className="dog_breed_list">
+                            <ul className={styles['dog_breed_list']}>
                                 {dogData.map((dog) => (
                                     <li key={dog.name} onClick={() => handleClickResults(dog)}>
                                         <h3>{dog.name}</h3>
@@ -223,13 +223,17 @@ function VragenlijstEen() {
                     }
                     {Object.keys(dogData).length === 0 && loading === false &&
                         <>
-                            <p>Er zijn helaas geen resultaten die aan jouw criteria voldoen.</p>
+                            <p>Unfortunately, the dog you're looking for doesn't exist. Please note that most dogs have a lot of energy.</p>
+
                         </>
                     }
 
 
                 </div>
-                <img src={Pug} className="pug_image" alt="Pug" />
+                <div className={styles['dog']}>
+                    <img src={Pug} className={styles['dog--pug']} alt="Pug" />
+                    <img src={Corgi} className={styles['dog--corgi']} alt="Corgi" />
+                </div>
 
             </div>
 

@@ -1,9 +1,11 @@
 import {Context} from "../components/Context";
 import Schnauzer from "../assets/Schnauzer.png"
 import {useContext, useState, } from "react";
-import './Vragenlijst_2.css';
+import styles from './Vragenlijst_2.module.css';
 import {useNavigate} from "react-router-dom";
 import results from "./Results";
+import Pug from "../assets/Pug.png";
+import Corgi from "../assets/Corgi.png";
 
 
 
@@ -232,13 +234,13 @@ function VragenlijstTwee() {
 
     return (
         <>
-            <div className="content_wrapper">
-                <div className="vragenlijst_1">
+            <div className={styles['page_wrapper']}>
+                <div className={styles['inner_wrapper']}>
                     <h1>Are you a match with the {dogChoice.name}?</h1>
                     <form>
                         <section>
                             <label htmlFor="walkies_slider">How many times would you like to walk your
-                                dog?</label>
+                                dog?</label><br />
                             <input
                                 name="walkies"
                                 id="walkies_slider"
@@ -253,7 +255,7 @@ function VragenlijstTwee() {
 
                         </section>
                         <section>
-                            <label htmlFor="home_slider">How often are you at home?</label>
+                            <label htmlFor="home_slider">How often are you at home?</label><br />
                             <input
                                 name="home"
                                 id="home_slider"
@@ -268,7 +270,7 @@ function VragenlijstTwee() {
 
                         </section>
                         <section>
-                            <label htmlFor="house_slider">How big is your house?</label>
+                            <label htmlFor="house_slider">How big is your house?</label><br />
                             <input
                                 name="house"
                                 id="house_slider"
@@ -293,8 +295,9 @@ function VragenlijstTwee() {
 
                     </form>
                 </div>
-
-                <img src={Schnauzer} className="schnauzer_image" alt="Schnauzer"/>
+                <div className={styles['dog']}>
+                    <img src={Schnauzer} className={styles['dog--schnauzer']} alt="Schnauzer"/>
+                </div>
 
             </div>
 

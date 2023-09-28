@@ -1,6 +1,6 @@
-import './RasInformatie.css'
+import './RasInformatie.module.css'
 import IrishSetter from '../assets/Irish_setter.png'
-import './Vragenlijst_1.css'
+import './Vragenlijst_1.module.css'
 import {useNavigate} from "react-router-dom";
 import {useContext} from "react";
 import {Context} from "../components/Context";
@@ -19,10 +19,13 @@ console.log(dogChoice);
                 <div className="vragenlijst_1">
                     <h1>Results</h1>
                     <p>
+
                         <ul>
                             <li>{dogChoice.matchEnergy}</li>
                             <li>{dogChoice.matchHousing}</li>
                             <li>{dogChoice.matchPlayfulness}</li>
+                            {dogChoice.overallMatch && <li>Het is een match!</li>}
+                            {!dogChoice.overallMatch && <li>Het is geen match!</li>}
                         </ul>
                     </p>
                 </div>
