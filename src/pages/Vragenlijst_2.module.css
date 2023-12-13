@@ -29,8 +29,14 @@
 
 .dog--schnauzer {
     position: absolute;
-    right: 25rem;
+    right: 32rem;
     height: 15rem;
+    align-self: flex-end;
+}
+.dog--scottish {
+    position: absolute;
+    right: 22rem;
+    height: 12rem;
     align-self: flex-end;
 }
 

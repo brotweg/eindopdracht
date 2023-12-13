@@ -1,15 +1,18 @@
-import styles from './RasInformatie.module.css'
-import '../index.css'
-import IrishSetter from '../assets/Irish_setter.png'
-import {useNavigate} from "react-router-dom";
-import {useContext} from "react";
-import {Context} from "../components/Context";
-import BreedInfo from "../components/BreedInfo";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { DogContext } from '../components/DogContext';
+import BreedInfo from '../components/BreedInfo';
+import styles from './RasInformatie.module.css';
+import '../index.css';
+import Greyhound from '../assets/Greyhound.png';
 
+
+import Header from '../components/Header';
 
 function RasInformatie() {
     const navigate = useNavigate();
-    const [dogContext, setDogContext] = useContext(Context);
+    const { dogContext, setDogContext } = useContext(DogContext);
 
     return (
         <>
@@ -18,18 +21,14 @@ function RasInformatie() {
                     <BreedInfo />
                 </div>
                 <div className={styles.dog}>
-
-                        <img src={IrishSetter} className={styles['dog--setter']} alt="Irish Setter" />
-
-
-                        <button onClick={() => navigate('/vragenlijst_2')}>Continue</button>
-
+                    <img src={Greyhound} className={styles['dog--greyhound']} alt="Greyhound" />
+                    <button className={styles['continue_button']} onClick={() => navigate('/vragenlijst_2')}>
+                        Continue
+                    </button>
                 </div>
             </div>
-
-
         </>
-    )
+    );
 }
 
 export default RasInformatie;

@@ -1,11 +1,17 @@
-import Bernes_mountain_dog from "../assets/Bernes_mountain_dog.png"
-import Collie from "../assets/Collie.png"
-import styles from './Home.module.css'
-import '../index.css'
+import React, {useContext} from "react";
+import styles from './Home.module.css';
+import '../index.css';
 import {useNavigate} from "react-router-dom";
+import Collie from "../assets/Collie.png";
+import Bernes_mountain_dog from "../assets/Bernes_mountain_dog.png";
+import {AuthContext} from "../components/AuthContext";
 
 function Home() {
+
     const navigate = useNavigate();
+    const {isAuth} = useContext(AuthContext);
+
+
     return (
         <>
         <div className={styles['page_wrapper']}>
@@ -17,6 +23,9 @@ function Home() {
                 <span>
                     <button onClick={ ()=> navigate('/inloggen')}>Login</button>
                     <button onClick={ () => navigate('/registreren')}>Create account</button>
+                    {isAuth && (
+                        <button onClick={ () => navigate('/uitleg')}>Read instructions</button>
+                        )}
                 </span>
             </div>
 

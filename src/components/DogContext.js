@@ -1,5 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 
-export const Context = React.createContext(null);
+export const DogContext = React.createContext({});
 
-const [dogChoice, setDogChoice] = useState({});
+function DogContextProvider({ children }) {
+
+    const [dogChoice, setDogChoice] = useState({});
+
+    const dogData = {
+        dogChoice,
+        setDogChoice,
+    }
+
+return (
+    <DogContext.Provider value={dogData}>
+        {children}
+    </DogContext.Provider>
+
+)};
+
+export default DogContextProvider;
+

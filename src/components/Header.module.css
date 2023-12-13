@@ -4,9 +4,8 @@ nav {
     align-items: center;
     justify-content: space-between;
     max-height: 50px;
-    background-color: #0A3F5C;
+    background-color: var(--dark-blue);
     color: #FFF;
-    min-width: 420px;
 }
 
 nav a {
@@ -20,10 +19,10 @@ nav a {
     width: 150px;
 }
 
-.logo-container h3 {
+.logo-container h1 {
     font-family: 'Oswald', sans-serif;
-    font-size: 28px;
-    margin: 0px 0px 0px 20px;
+    font-size: 1.8em;
+    margin: 0 0 0 0.8em;
 
 }
 
@@ -31,10 +30,27 @@ nav a {
     height: 55px;
     margin-top: -2px;
     margin-left: -3px;
+}
+
+.button_container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
 }
-.login_button {
-    margin-right: 20px;
-    font-size: 18px;
+
+.button_container p {
+    font-size: 1.2em;
+    white-space: nowrap;
+
+
+}
+
+.logout_button {
+    background: none;
+    height: auto;
+    width: fit-content;
+    font-size: 1.2em;
+    margin: 0 20px 0 0px;
 }
 

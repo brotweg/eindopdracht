@@ -2,18 +2,14 @@
     display: flex;
     flex-direction: row; /* set to column to position dogs below other content */
     flex-wrap: wrap;
-    min-width: 420px;
     min-height: 100vh;
 }
 
 .inner_wrapper {
     display: flex;
     flex-direction: column;
-    background-color: var(--white);
-    max-width: 60%;
-    min-width: 420px;
-    flex-grow: 2;
     padding-left: 20px;
+    max-width: 60%;
 }
 
 /* Sizing of the dog images */
@@ -40,8 +36,25 @@
 
 /* ######## Other elements ###### */
 
+button {
+    margin: 0px;
+}
 
 button + button {
     margin-left: 10px;
 }
 
+
+@media screen and (max-width: 430px) {
+    button {
+        margin: 0;
+    }
+
+    button + button {
+        margin: 20px 0 0 0;
+    }
+
+    .inner_wrapper {
+        max-width: 100%;
+    }
+}

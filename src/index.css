@@ -16,12 +16,13 @@ a {
 }
 
 p {
-
+  max-width: 100%;
+  margin-right: 20px;
 }
 
 h1 {
   font-family: "Sriracha", serif;
-  margin: 10px 0px;
+  margin: 10px 20px 0 0;
 
 }
 
@@ -47,6 +48,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.success_popup {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
 /* ######## General structure for all pages ######## */
 
 /*
@@ -67,7 +75,7 @@ body {
   flex-grow: 2;
 }
 
-/* Sizing of the dog images
+/* Sizing of the dog images */
 
 .dog {
   display: flex;
@@ -79,40 +87,3 @@ body {
   margin: 20px 0 0 20px;
 }
 
-.dog--bernese {
-  max-width: 100%;
-  height: 17rem;
-}
-
-.dog--collie {
-  max-width: 100%;
-  height: 14rem;
-}
-
-*/
-
-
-.dog--setter {
-  right: 15rem;
-  height: 20rem;
-}
-
-.dog--corgi {
-  right: 15rem;
-  height: 15rem;
-}
-
-.dog--chow {
-  left: 20px;
-  height: 20rem;
-}
-
-.dog--pug {
-  right: 20rem;
-  height: 10rem;
-}
-
-.dog--schnauzer {
-  right: 25rem;
-  height: 15rem;
-}
