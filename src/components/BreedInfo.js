@@ -1,9 +1,10 @@
 import axios from "axios";
 import {useContext, useEffect, useState} from "react";
-import {Context} from "./Context";
+import {DogContext} from "./DogContext";
+import React from "react";
 
 function BreedInfo() {
-    const [dogChoice, setDogChoice] = useContext(Context);
+    const { dogChoice, setDogChoice} = useContext(DogContext);
     const [dogBreeds, setDogBreeds] = useState([]);
     const [breedInfoArray, setBreedInfoArray] = useState([]);
     const [foundDogBreed, setFoundDogBreed] = useState([]);
@@ -53,7 +54,7 @@ function BreedInfo() {
         <>
            <div className="information">
                     {loading &&
-                        <p>Aan het laden...</p>
+                        <p>Loading...</p>
                     }
                     {loading === false && (
                         <>

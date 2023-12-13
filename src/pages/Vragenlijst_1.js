@@ -1,31 +1,31 @@
-import Pug from '../assets/Pug.png'
-import Corgi from '../assets/Corgi.png'
-import styles from './Vragenlijst_1.module.css'
-import '../index.css'
-import {useNavigate} from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import {useContext, useState} from "react";
-import {Context} from "../components/Context";
-
-
+import { useContext, useState } from 'react';
+import { DogContext } from '../components/DogContext';
+import Header from '../components/Header';
+import Pug from '../assets/Pug.png';
+import ShiTzu from '../assets/shitzu.png';
+import styles from './Vragenlijst_1.module.css';
+import '../index.css';
 
 function VragenlijstEen() {
     const navigate = useNavigate();
-    const apiKey = 'OvzRvYsVHUUcIgk5PKl5Brg1I4eWGN7toxXd1mvk';
+    const apiKey = process.env.REACT_APP_API_KEY;
 
     const [dogData, setDogData] = useState({});
     const [loading, toggleLoading] = useState(false);
     const [energy, setEnergy] = useState(1);
     const [playfulness, setPlayfulness] = useState(1);
     const [barking, setBarking] = useState(1);
-    const [dogChoice, setDogChoice] = useContext(Context);
-
+    const { dogChoice, setDogChoice } = useContext(DogContext);
 
     async function fetchData(offset) {
         toggleLoading(true);
         for (let i = 1; i <= 10; i++) {
             try {
-                const result = await axios.get('https://api.api-ninjas.com/v1/dogs',
+                const result = await axios.get(
+                    'https://api.api-ninjas.com/v1/dogs',
                     {
                         params: {
                             energy: energy,
@@ -35,18 +35,16 @@ function VragenlijstEen() {
                         },
                         headers: {
                             'X-Api-Key': apiKey,
-                        }
+                        },
                     }
                 );
                 toggleLoading(false);
-                console.log(result.data)
+                console.log(result.data);
 
                 return result.data;
-
             } catch (e) {
                 console.error(e);
                 toggleLoading(false);
-
             }
         }
     }
@@ -69,8 +67,6 @@ function VragenlijstEen() {
             console.error(error);
         }
     }
-
-
 
     function handleSliderChangeEnergy(e) {
         setEnergy(e.target.value);
@@ -139,21 +135,17 @@ function VragenlijstEen() {
         console.log(dog);
         setDogChoice(dog);
         navigate('/ras_informatie');
-
     }
 
-
-
-
-
-    return(
+    return (
         <>
             <div className={styles['page_wrapper']}>
                 <div className={styles['inner_wrapper']}>
                     <h1>Your perfect dog</h1>
                     <form>
                         <section>
-                            <label htmlFor="energy_slider">Energy level:</label><br/>
+                            <label htmlFor="energy_slider">Energy level:</label>
+                            <br />
                             <input
                                 name="energy"
                                 id="energy_slider"
@@ -165,10 +157,10 @@ function VragenlijstEen() {
                                 onChange={handleSliderChangeEnergy}
                             />
                             <span>{sliderTextEnergy(energy)}</span>
-
                         </section>
                         <section>
-                            <label htmlFor="playfulness_slider">Playfulness:</label><br/>
+                            <label htmlFor="playfulness_slider">Playfulness:</label>
+                            <br />
                             <input
                                 name="playfulness"
                                 id="playfulness_slider"
@@ -180,10 +172,10 @@ function VragenlijstEen() {
                                 onChange={handleSliderChangePlayfulness}
                             />
                             <span>{sliderTextPlayfulness(playfulness)}</span>
-
                         </section>
                         <section>
-                            <label htmlFor="barking_slider">Vocalization level:</label><br/>
+                            <label htmlFor="barking_slider">Vocalization level:</label>
+                            <br />
                             <input
                                 name="barking"
                                 id="barking_slider"
@@ -195,21 +187,16 @@ function VragenlijstEen() {
                                 onChange={handleSliderChangeBarking}
                             />
                             <span>{sliderTextBarking(barking)}</span>
-
                         </section>
 
-                        <button type="submit" onClick={handleClick}>Verzend</button>
-
-
-
+                        <button type="submit" onClick={handleClick}>
+                            Verzend
+                        </button>
                     </form>
 
+                    {loading && <p>Loading...</p>}
 
-                    {loading &&
-                        <p>Loading...</p>
-                    }
-
-                    {Object.keys(dogData).length > 0 && loading === false &&
+                    {Object.keys(dogData).length > 0 && loading === false && (
                         <>
                             <ul className={styles['dog_breed_list']}>
                                 {dogData.map((dog) => (
@@ -220,23 +207,21 @@ function VragenlijstEen() {
                                 ))}
                             </ul>
                         </>
-                    }
-                    {Object.keys(dogData).length === 0 && loading === false &&
+                    )}
+                    {Object.keys(dogData).length === 0 && loading === false && (
                         <>
-                            <p>Unfortunately, the dog you're looking for doesn't exist. Please note that most dogs have a lot of energy.</p>
-
+                            <p>
+                                Unfortunately, the dog you're looking for doesn't exist. Please
+                                note that most dogs have a lot of energy.
+                            </p>
                         </>
-                    }
-
-
+                    )}
                 </div>
                 <div className={styles['dog']}>
                     <img src={Pug} className={styles['dog--pug']} alt="Pug" />
-                    <img src={Corgi} className={styles['dog--corgi']} alt="Corgi" />
+                    <img src={ShiTzu} className={styles['dog--shitzu']} alt="ShiTzu" />
                 </div>
-
             </div>
-
         </>
     );
 }

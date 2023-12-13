@@ -1,8 +1,7 @@
 .page_wrapper {
     display: flex;
-    flex-direction: column;  /* set to column to position dogs below other content */
+    flex-direction: row;  /* set to column to position dogs below other content */
     flex-wrap: wrap;
-    min-width: 420px;
     min-height: 100vh;
 }
 
@@ -11,7 +10,6 @@
     flex-direction: column;
     background-color: var(--white);
     max-width: 60%;
-    min-width: 420px;
     flex-grow: 2;
     padding: 0 0 20px 20px;
 }
@@ -19,13 +17,15 @@
 /* Sizing of the dog images */
 
 .dog {
-  display: flex;
-  width: 100%;
-  align-items: flex-end;
-  flex-direction: row;
-  justify-content: space-evenly;
-
+    display: flex;
+    align-items: flex-end;
+    align-self: flex-end;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    margin: 20px 0 0 20px;
 }
+
 
 .dog--chow {
   max-width: 100%;

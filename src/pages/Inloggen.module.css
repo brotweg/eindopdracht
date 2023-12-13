@@ -1,0 +1,58 @@
+
+.page_wrapper {
+    display: flex;
+    flex-direction: row; /* set to column to position dogs below other content */
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+
+.inner_wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    padding-left: 20px;
+}
+
+/* Sizing of the dog images */
+
+.dog {
+    display: flex;
+    align-items: flex-end;
+    align-self: flex-end;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-grow: 1;
+    margin: 20px 80px 0 20px;
+}
+
+.dog--setter {
+    right: 25rem;
+    height: 18rem;
+}
+
+
+/*######## Other elements #######*/
+
+
+.form_paragraph {
+    max-width: 420px;
+    text-align: left;
+    margin-top: 10px;
+
+}
+
+.form_paragraph section {
+
+}
+
+.form_paragraph input {
+    width: 15em;
+    text-align: right;
+}
+
+.form_paragraph button {
+    float: right;
+    margin-top: 40px;
+}
+
+
