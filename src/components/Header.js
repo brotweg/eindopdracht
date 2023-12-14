@@ -1,10 +1,9 @@
+import React from "react";
 import logo from "../assets/logo.png"
 import styles from './Header.module.css'
 import {Link, useNavigate} from "react-router-dom";
-import React, {useEffect, useState} from "react";
 import {AuthContext} from "./AuthContext";
 import {useContext} from "react";
-import UppercaseName from "./UppercaseName";
 import uppercaseName from "./UppercaseName";
 
 function Header() {

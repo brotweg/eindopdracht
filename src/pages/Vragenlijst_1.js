@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useContext, useState } from 'react';
 import { DogContext } from '../components/DogContext';
-import Header from '../components/Header';
 import Pug from '../assets/Pug.png';
 import ShiTzu from '../assets/shitzu.png';
 import styles from './Vragenlijst_1.module.css';

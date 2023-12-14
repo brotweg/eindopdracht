@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { DogContext } from '../components/DogContext';
-import Header from '../components/Header';
 import styles from './Results.module.css';
 import '../index.css';
 import Golden from '../assets/Golden_retriever.png';

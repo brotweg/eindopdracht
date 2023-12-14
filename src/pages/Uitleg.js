@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import ChowChow from "../assets/ChowChow.png";
-import Greyhound from "../assets/Greyhound.png";
 import styles from './Uitleg.module.css';
 import { DogContext } from '../components/DogContext';
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
+
 
 function Uitleg() {
     const { dogChoice } = useContext(DogContext);

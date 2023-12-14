@@ -6,7 +6,6 @@ import '../index.css';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from "../components/AuthContext";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
 
 function Register() {
     const { toggleIsAuth } = useContext(AuthContext);
@@ -37,7 +36,7 @@ function Register() {
         <>
             <div className={styles["page_wrapper"]}>
                 <div className={styles["inner_wrapper"]}>
-                    <h1>Registreren</h1>
+                    <h1>Create Account</h1>
                     <form onSubmit={handleSubmit(handleRegisterSubmit)}>
                         <section>
                             <label htmlFor="username-field">Userame</label>

@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Inloggen.module.css";
 import "../index.css";
 import Irish_setter from "../assets/Irish_setter.png";
-import Header from "../components/Header";
 
 function Inloggen() {
     const [error, setError] = useState('');
@@ -42,7 +41,7 @@ function Inloggen() {
         <>
             <div className={styles["page_wrapper"]}>
                 <div className={styles["inner_wrapper"]}>
-                    <h1>Inloggen</h1>
+                    <h1>Log In</h1>
                     <div className={styles['form_paragraph']}>
                         <form onSubmit={handleSubmit(handleLoginSubmit)}>
                             <section>

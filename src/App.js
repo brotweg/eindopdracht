@@ -11,7 +11,6 @@ import Registreren from "./pages/Registreren";
 import RasInformatie from "./pages/RasInformatie";
 import Results from "./pages/Results";
 import {AuthContext} from "./components/AuthContext";
-import {DogContext} from "./components/DogContext";
 import {useContext} from "react";
 import React from "react";
 

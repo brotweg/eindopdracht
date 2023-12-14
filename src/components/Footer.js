@@ -1,6 +1,5 @@
 import styles from './Footer.module.css'
 import React from "react";
-import * as http from "http";
 
 function Footer() {
 
